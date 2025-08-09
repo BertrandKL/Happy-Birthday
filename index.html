@@ -239,8 +239,26 @@
     </style>
 </head>
 <body>
-    <audio id="bg-music" src="生日快乐歌曲.mp3" loop autoplay></audio>
+    <audio id="bg-music" src="生日快乐歌曲.mp3" loop></audio>
     <audio id="pop-sound" src="Balloon Pop.mp3"></audio>
+    <button id="music-btn" style="position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:999;background:#fffbe9;color:#ff69b4;border:none;padding:10px 22px;border-radius:18px;font-size:1rem;box-shadow:0 2px 8px #ffb6c1aa;display:none;">Tap to Play Music 🎵</button>
+    <div class="birthday-title">Happy Birthday</div>
+    <!-- ...existing code... -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        music.volume = 0.5;
+        // Try to play music, if blocked show button
+        music.play().catch(() => {
+            musicBtn.style.display = 'block';
+            musicBtn.addEventListener('click', function() {
+                music.play();
+                musicBtn.style.display = 'none';
+            });
+        });
+    });
+    <div class="birthday-title">Happy Birthday</div>
     <div class="center-container">
         <div class="birthday-title">Happy Birthday</div>
         <div class="note">
@@ -258,18 +276,6 @@
             <img class="panda-gif" src="Panda.gif" alt="Panda" />
         </div>
     </div>
-    <script>
-    window.addEventListener('DOMContentLoaded', function() {
-        const music = document.getElementById('bg-music');
-        music.volume = 0.5;
-        music.play().catch(() => {
-            const startMusic = () => {
-                music.play();
-                window.removeEventListener('pointerdown', startMusic);
-            };
-            window.addEventListener('pointerdown', startMusic);
-        });
-    });
 
     const wishes = [
         "愿你天天开心！",
