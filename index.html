@@ -5,6 +5,12 @@
     <title>Happy Birthday</title>
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             min-height: 100vh;
             margin: 0;
@@ -14,12 +20,18 @@
             background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
             overflow-x: hidden;
         }
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            min-height: 100vh;
+        }
         .birthday-title {
-            position: absolute;
-            top: 8%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 3.5rem;
+            margin-bottom: 32px;
+            font-size: 6vw;
+            min-font-size: 3.5rem;
             font-family: 'Pacifico', 'Segoe Script', cursive, Arial, sans-serif;
             color: #fff;
             text-shadow: 0 4px 16px #ff69b4, 0 2px 8px #fff, 2px 2px 0 #ffb6c1;
@@ -38,18 +50,19 @@
                 gradient-move 3s 1s linear infinite;
             animation-fill-mode: forwards;
             z-index: 2;
+            text-align: center;
         }
         @keyframes drop-in {
-            0% { opacity: 0; transform: translateX(-50%) translateY(-200px) scale(1.2);}
-            70% { opacity: 1; transform: translateX(-50%) translateY(20px) scale(0.95,1.05);}
-            85% { transform: translateX(-50%) translateY(-10px) scale(1.05,0.95);}
-            100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1,1);}
+            0% { opacity: 0; transform: translateY(-200px) scale(1.2);}
+            70% { opacity: 1; transform: translateY(20px) scale(0.95,1.05);}
+            85% { transform: translateY(-10px) scale(1.05,0.95);}
+            100% { opacity: 1; transform: translateY(0) scale(1,1);}
         }
         @keyframes bounce {
-            0%   { transform: translateX(-50%) scale(1) translateY(0);}
-            40%  { transform: translateX(-50%) scale(1.08,0.92) translateY(-10px);}
-            60%  { transform: translateX(-50%) scale(0.96,1.04) translateY(5px);}
-            100% { transform: translateX(-50%) scale(1) translateY(0);}
+            0%   { transform: scale(1) translateY(0);}
+            40%  { transform: scale(1.08,0.92) translateY(-10px);}
+            60%  { transform: scale(0.96,1.04) translateY(5px);}
+            100% { transform: scale(1) translateY(0);}
         }
         @keyframes gradient-move {
             0% { background-position: 0% 50%; }
@@ -63,7 +76,7 @@
                 0 4px 16px 0 rgba(255,182,193,0.13), 
                 0 1.5px 4px 0 rgba(255,255,255,0.7) inset, 
                 0 0 0 4px #fffbeacc inset;
-            padding: 48px 120px;
+            padding: 4vw 4vw 4vw 4vw;
             text-align: center;
             font-family: 'Segoe UI', Arial, sans-serif;
             position: relative;
@@ -71,20 +84,28 @@
             opacity: 0;
             transform: translateY(120px) scale(0.92) rotate(-8deg);
             animation: note-in 1.8s cubic-bezier(.77,0,.18,1) 0.8s forwards;
-            min-width: 420px;
+            width: 90vw;
+            max-width: 900px;
+            min-width: 0;
             overflow: visible;
         }
         .note h1 {
             color: #ff69b4;
-            font-size: 2.5rem;
+            font-size: 2.5vw;
+            min-font-size: 1.5rem;
             margin: 0;
             letter-spacing: 2px;
+        }
+        .note p {
+            font-size: 2vw;
+            min-font-size: 1rem;
         }
         .note .from {
             position: absolute;
             right: 32px;
             bottom: 24px;
-            font-size: 1.1rem;
+            font-size: 1.3vw;
+            min-font-size: 1rem;
             color: #ff69b4;
             font-family: 'Segoe Script', 'Pacifico', cursive, Arial, sans-serif;
             opacity: 0.7;
@@ -93,7 +114,8 @@
         .party-emoji {
             position: absolute;
             top: -60px;
-            font-size: 5rem;
+            font-size: 5vw;
+            min-font-size: 2rem;
             z-index: 2;
             user-select: none;
             pointer-events: none;
@@ -135,23 +157,51 @@
             90% { opacity: 1;}
             100% { opacity: 0; transform: translateX(-50%) translateY(-110vh);}
         }
+        @media (max-width: 900px) {
+            .note {
+                width: 90vw;
+                padding: 4vw 2vw;
+            }
+            .note h1 {
+                font-size: 5vw;
+            }
+            .note p {
+                font-size: 3.5vw;
+            }
+            .note .from {
+                font-size: 3vw;
+                right: 12px;
+                bottom: 10px;
+            }
+            .party-emoji {
+                font-size: 7vw;
+            }
+        }
         @media (max-width: 600px) {
             .birthday-title {
-                font-size: 2rem;
+                font-size: 10vw;
                 padding: 0 8px;
             }
             .note {
-                padding: 24px 8px;
+                width: 96vw;
+                padding: 6vw 2vw;
                 border-radius: 20px;
                 min-width: 0;
             }
             .note h1 {
-                font-size: 1.5rem;
+                font-size: 7vw;
+            }
+            .note p {
+                font-size: 4vw;
             }
             .note .from {
-                right: 12px;
-                bottom: 10px;
-                font-size: 0.95rem;
+                font-size: 4vw;
+                right: 8px;
+                bottom: 6px;
+            }
+            .party-emoji {
+                font-size: 9vw;
+                top: -22px;
             }
             .wish-card {
                 font-size: 0.9rem;
@@ -191,21 +241,23 @@
 <body>
     <audio id="bg-music" src="生日快乐歌曲.mp3" loop autoplay></audio>
     <audio id="pop-sound" src="Balloon Pop.mp3"></audio>
-    <div class="birthday-title">Happy Birthday</div>
-    <div class="note">
-    <span class="party-emoji left">🎉</span>
-    <span class="party-emoji right">🎊</span>
-    <h1>美绮</h1>
-    <p>
-        生日快乐！希望你喜欢我做的这个网站哈哈！<br>
-        今天是你的特别日子，愿你在新的一岁里，<br>
-        每天都能感受到快乐和幸福。<br>
-        愿你在未来的日子里，充满爱与喜悦。<br>
-        美绮，生日快乐！<br>
-    </p>
-    <span class="from">from: Bertrand</span>
-    <img class="panda-gif" src="Panda.gif" alt="Panda" />
-</div>
+    <div class="center-container">
+        <div class="birthday-title">Happy Birthday</div>
+        <div class="note">
+            <span class="party-emoji left">🎉</span>
+            <span class="party-emoji right">🎊</span>
+            <h1>美绮</h1>
+            <p>
+                生日快乐！希望你喜欢我做的这个网站哈哈！<br>
+                今天是你的特别日子，愿你在新的一岁里，<br>
+                每天都能感受到快乐和幸福。<br>
+                愿你在未来的日子里，充满爱与喜悦。<br>
+                美绮，生日快乐！<br>
+            </p>
+            <span class="from">from: Bertrand</span>
+            <img class="panda-gif" src="Panda.gif" alt="Panda" />
+        </div>
+    </div>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
         const music = document.getElementById('bg-music');
@@ -250,4 +302,4 @@
     setInterval(createWishCard, 1200);
 
     for(let i=0;i<3;i++) createWishCard();
-</script>
+    </script>
