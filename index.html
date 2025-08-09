@@ -3,41 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Happy Birthday</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        html, body {
-            width: 100vw;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            overflow-x: hidden;
-        }
         body {
             min-height: 100vh;
             margin: 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
             overflow-x: hidden;
-            position: relative;
         }
         .birthday-title {
-            margin-top: 32px;
-            font-size: 2.5rem;
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3.5rem;
             font-family: 'Pacifico', 'Segoe Script', cursive, Arial, sans-serif;
             color: #fff;
             text-shadow: 0 4px 16px #ff69b4, 0 2px 8px #fff, 2px 2px 0 #ffb6c1;
-            letter-spacing: 2px;
-            padding: 0 16px;
+            letter-spacing: 3px;
+            padding: 0 24px;
+            display: inline-block;
             background: linear-gradient(90deg, #ffb6c1 30%, #fff 70%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: white;
             filter: drop-shadow(0 6px 12px rgba(255,105,180,0.25));
-            border-radius: 24px 24px 0 0;
+            border-radius: 32px 32px 0 0;
             background-size: 200% 100%;
             animation:
                 drop-in 1s cubic-bezier(.68,-0.55,.27,1.55),
@@ -45,21 +38,18 @@
                 gradient-move 3s 1s linear infinite;
             animation-fill-mode: forwards;
             z-index: 2;
-            text-align: center;
-            max-width: 95vw;
-            word-break: break-word;
         }
         @keyframes drop-in {
-            0% { opacity: 0; transform: translateY(-200px) scale(1.2);}
-            70% { opacity: 1; transform: translateY(20px) scale(0.95,1.05);}
-            85% { transform: translateY(-10px) scale(1.05,0.95);}
-            100% { opacity: 1; transform: translateY(0) scale(1,1);}
+            0% { opacity: 0; transform: translateX(-50%) translateY(-200px) scale(1.2);}
+            70% { opacity: 1; transform: translateX(-50%) translateY(20px) scale(0.95,1.05);}
+            85% { transform: translateX(-50%) translateY(-10px) scale(1.05,0.95);}
+            100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1,1);}
         }
         @keyframes bounce {
-            0%   { transform: scale(1) translateY(0);}
-            40%  { transform: scale(1.08,0.92) translateY(-10px);}
-            60%  { transform: scale(0.96,1.04) translateY(5px);}
-            100% { transform: scale(1) translateY(0);}
+            0%   { transform: translateX(-50%) scale(1) translateY(0);}
+            40%  { transform: translateX(-50%) scale(1.08,0.92) translateY(-10px);}
+            60%  { transform: translateX(-50%) scale(0.96,1.04) translateY(5px);}
+            100% { transform: translateX(-50%) scale(1) translateY(0);}
         }
         @keyframes gradient-move {
             0% { background-position: 0% 50%; }
@@ -67,36 +57,34 @@
         }
         .note {
             background: linear-gradient(120deg, #fffbea 70%, #f5e9d7 100%);
-            border-radius: 20px;
+            border-radius: 32px;
             box-shadow:
-                0 8px 24px 0 rgba(0,0,0,0.18), 
-                0 2px 8px 0 rgba(255,182,193,0.13), 
-                0 1px 3px 0 rgba(255,255,255,0.7) inset, 
-                0 0 0 2px #fffbeacc inset;
-            padding: 24px 10vw 32px 10vw;
+                0 12px 32px 0 rgba(0,0,0,0.22), 
+                0 4px 16px 0 rgba(255,182,193,0.13), 
+                0 1.5px 4px 0 rgba(255,255,255,0.7) inset, 
+                0 0 0 4px #fffbeacc inset;
+            padding: 48px 120px;
             text-align: center;
             font-family: 'Segoe UI', Arial, sans-serif;
             position: relative;
             z-index: 1;
             opacity: 0;
-            transform: translateY(80px) scale(0.95) rotate(-4deg);
-            animation: note-in 1.5s cubic-bezier(.77,0,.18,1) 0.8s forwards;
-            min-width: 0;
-            max-width: 98vw;
-            margin: 32px 0 0 0;
+            transform: translateY(120px) scale(0.92) rotate(-8deg);
+            animation: note-in 1.8s cubic-bezier(.77,0,.18,1) 0.8s forwards;
+            min-width: 420px;
             overflow: visible;
         }
         .note h1 {
             color: #ff69b4;
-            font-size: 1.7rem;
+            font-size: 2.5rem;
             margin: 0;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
         .note .from {
             position: absolute;
-            right: 16px;
-            bottom: 10px;
-            font-size: 1rem;
+            right: 32px;
+            bottom: 24px;
+            font-size: 1.1rem;
             color: #ff69b4;
             font-family: 'Segoe Script', 'Pacifico', cursive, Arial, sans-serif;
             opacity: 0.7;
@@ -104,33 +92,20 @@
         }
         .party-emoji {
             position: absolute;
-            top: -38px;
-            font-size: 2.5rem;
+            top: -60px;
+            font-size: 5rem;
             z-index: 2;
             user-select: none;
             pointer-events: none;
             filter: drop-shadow(0 2px 6px #ffb6c1aa);
         }
         .party-emoji.left {
-            left: -8px;
+            left: -18px;
             transform: rotate(18deg);
         }
         .party-emoji.right {
-            right: -8px;
+            right: -18px;
             transform: scaleX(-1) rotate(-18deg);
-        }
-        .panda-gif {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-            z-index: 2;
-            pointer-events: none;
-            background: #fffbe9;
         }
         /* Floating wish cards */
         .wish-card {
@@ -140,10 +115,10 @@
             transform: translateX(-50%);
             background: #fffbe9;
             color: #ff69b4;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-family: 'Segoe UI', Arial, sans-serif;
-            padding: 7px 10px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            border-radius: 14px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.10);
             white-space: nowrap;
             pointer-events: auto;
@@ -153,9 +128,6 @@
             z-index: 10;
             cursor: pointer;
             user-select: none;
-            max-width: 85vw;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         @keyframes card-float {
             0% { opacity: 0; transform: translateX(-50%) translateY(0);}
@@ -163,87 +135,87 @@
             90% { opacity: 1;}
             100% { opacity: 0; transform: translateX(-50%) translateY(-110vh);}
         }
-        @keyframes note-in {
-            0% { opacity: 0; transform: translateY(80px) scale(0.95) rotate(-4deg);}
-            40% { opacity: 1; transform: translateY(-10px) scale(1.03) rotate(2deg);}
-            65% { transform: translateY(4px) scale(0.98) rotate(-1deg);}
-            80% { transform: translateY(-2px) scale(1.01) rotate(1deg);}
-            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg);}
-        }
-        /* Responsive adjustments */
         @media (max-width: 600px) {
             .birthday-title {
-                font-size: 1.5rem;
-                padding: 0 4px;
-                margin-top: 18px;
+                font-size: 2rem;
+                padding: 0 8px;
             }
             .note {
-                padding: 16px 4vw 24px 4vw;
-                border-radius: 14px;
-                margin-top: 18px;
+                padding: 24px 8px;
+                border-radius: 20px;
+                min-width: 0;
             }
             .note h1 {
-                font-size: 1.1rem;
+                font-size: 1.5rem;
             }
             .note .from {
-                right: 8px;
-                bottom: 6px;
-                font-size: 0.85rem;
-            }
-            .party-emoji {
-                font-size: 1.5rem;
-                top: -22px;
-                left: 0;
-                right: 0;
-            }
-            .panda-gif {
-                width: 28px;
-                right: 4px;
-                border-radius: 6px;
+                right: 12px;
+                bottom: 10px;
+                font-size: 0.95rem;
             }
             .wish-card {
-                font-size: 0.85rem;
-                padding: 5px 7px;
-                border-radius: 8px;
-                max-width: 80vw;
+                font-size: 0.9rem;
+                padding: 7px 10px;
             }
         }
-        /* Hide scrollbars on mobile */
-        ::-webkit-scrollbar { width: 0 !important; }
-        body { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes note-in {
+            0% { opacity: 0; transform: translateY(120px) scale(0.92) rotate(-8deg);}
+            40% { opacity: 1; transform: translateY(-18px) scale(1.04) rotate(3deg);}
+            65% { transform: translateY(6px) scale(0.98) rotate(-2deg);}
+            80% { transform: translateY(-3px) scale(1.01) rotate(1deg);}
+            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg);}
+        }
+        .panda-gif {
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 90px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            z-index: 2;
+            pointer-events: none;
+            background: #fffbe9;
+        }
+
+        @media (max-width: 600px) {
+            .panda-gif {
+                width: 54px;
+                right: 6px;
+                border-radius: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <audio id="bg-music" src="生日快乐歌曲.mp3" loop></audio>
+    <audio id="bg-music" src="生日快乐歌曲.mp3" loop autoplay></audio>
     <audio id="pop-sound" src="Balloon Pop.mp3"></audio>
-    <button id="music-btn" style="position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:999;background:#fffbe9;color:#ff69b4;border:none;padding:10px 22px;border-radius:18px;font-size:1rem;box-shadow:0 2px 8px #ffb6c1aa;display:none;">Tap to Play Music 🎵</button>
     <div class="birthday-title">Happy Birthday</div>
     <div class="note">
-        <span class="party-emoji left">🎉</span>
-        <span class="party-emoji right">🎊</span>
-        <h1>美绮</h1>
-        <p>
-            生日快乐！希望你喜欢我做的这个网站哈哈！<br>
-            今天是你的特别日子，愿你在新的一岁里，<br>
-            每天都能感受到快乐和幸福。<br>
-            愿你在未来的日子里，充满爱与喜悦。<br>
-            美绮，生日快乐！<br>
-        </p>
-        <span class="from">from: Bertrand</span>
-        <img class="panda-gif" src="Panda.gif" alt="Panda" />
-    </div>
+    <span class="party-emoji left">🎉</span>
+    <span class="party-emoji right">🎊</span>
+    <h1>美绮</h1>
+    <p>
+        生日快乐！希望你喜欢我做的这个网站哈哈！<br>
+        今天是你的特别日子，愿你在新的一岁里，<br>
+        每天都能感受到快乐和幸福。<br>
+        愿你在未来的日子里，充满爱与喜悦。<br>
+        美绮，生日快乐！<br>
+    </p>
+    <span class="from">from: Bertrand</span>
+    <img class="panda-gif" src="Panda.gif" alt="Panda" />
+</div>
     <script>
     window.addEventListener('DOMContentLoaded', function() {
         const music = document.getElementById('bg-music');
-        const musicBtn = document.getElementById('music-btn');
         music.volume = 0.5;
-        // Try to play music, if blocked show button
         music.play().catch(() => {
-            musicBtn.style.display = 'block';
-            musicBtn.addEventListener('click', function() {
+            const startMusic = () => {
                 music.play();
-                musicBtn.style.display = 'none';
-            });
+                window.removeEventListener('pointerdown', startMusic);
+            };
+            window.addEventListener('pointerdown', startMusic);
         });
     });
 
@@ -265,9 +237,7 @@
         // Randomize duration for variety
         const duration = Math.random() * 3 + 7; // 7-10s
         card.style.setProperty('--card-duration', `${duration}s`);
-        // Random horizontal position, keep within 5vw to 85vw
-        const leftPercent = Math.random() * 80 + 5;
-        card.style.left = `${leftPercent}vw`;
+        card.style.left = `${Math.random() * 80 + 10}%`; // random horizontal position
 
         // Remove card after float animation
         card.addEventListener('animationend', function() {
@@ -280,4 +250,4 @@
     setInterval(createWishCard, 1200);
 
     for(let i=0;i<3;i++) createWishCard();
-    </script>
+</script>
